@@ -91,7 +91,7 @@ export default function PortfolioPage() {
         <Container>
           <SectionHeader
             title="Portfolio"
-            subtitle="Browse through my collection of Instagram Reels and creative work that helped clients achieve exceptional results"
+            subtitle="Browse through my collection of social media content and creative work that helped clients achieve exceptional results"
           />
 
           {loading ? (

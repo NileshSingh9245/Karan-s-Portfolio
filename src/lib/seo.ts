@@ -3,13 +3,13 @@ import { Metadata } from "next";
 export const siteConfig = {
   name: "Karan - Digital Marketing & Creative Freelancer",
   description:
-    "Professional Digital Marketing & Creative Freelancer specializing in Instagram Reels, Video Editing, Social Media Management, and Graphic Design. Helping Indian businesses grow online.",
+    "Professional Digital Marketing & Creative Freelancer specializing in Social Media Management, Video Editing, Content Creation, and Graphic Design. Helping Indian businesses grow across all platforms.",
   url: "https://yourdomain.com", // Replace with your actual domain
   ogImage: "/og-image.jpg",
   creator: "Karan",
   keywords: [
     "digital marketing freelancer",
-    "instagram reels creator",
+    "social media manager",
     "video editor india",
     "social media manager",
     "graphic designer",

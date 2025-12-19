@@ -2,7 +2,20 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, Video, Upload, LogOut } from "lucide-react";
+import { 
+  Home, 
+  Video, 
+  Upload, 
+  LogOut, 
+  Briefcase, 
+  MessageSquare, 
+  Users,
+  BarChart3,
+  Wrench,
+  Heart,
+  Clock,
+  Mail
+} from "lucide-react";
 import { signOut } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
@@ -12,8 +25,16 @@ interface AdminLayoutProps {
 
 const navItems = [
   { href: "/admin/dashboard", label: "Dashboard", icon: Home },
-  { href: "/admin/reels", label: "Manage Reels", icon: Video },
-  { href: "/admin/uploads", label: "Manage Uploads", icon: Upload },
+  { href: "/admin/reels", label: "Reels", icon: Video },
+  { href: "/admin/services", label: "Services", icon: Briefcase },
+  { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquare },
+  { href: "/admin/team", label: "Team", icon: Users },
+  { href: "/admin/stock-videos", label: "Stock Videos", icon: Upload },
+  { href: "/admin/homepage-stats", label: "Homepage Stats", icon: BarChart3 },
+  { href: "/admin/about-tools", label: "Tools & Software", icon: Wrench },
+  { href: "/admin/about-values", label: "Core Values", icon: Heart },
+  { href: "/admin/about-journey", label: "Journey Timeline", icon: Clock },
+  { href: "/admin/contact-info", label: "Contact Info", icon: Mail },
 ];
 
 export default function AdminLayout({ children }: AdminLayoutProps) {

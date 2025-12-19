@@ -34,22 +34,22 @@ export default function Footer() {
                 KARAN
               </Link>
               <p className="text-gray-400 mb-6 max-w-md">
-                Professional Digital Marketing & Creative Freelancer specializing in Instagram Reels, Video Editing, and Social Media Growth for Indian businesses.
+                Professional Digital Marketing & Creative Freelancer specializing in Social Media Management, Video Editing, and Digital Marketing Growth for Indian businesses across all platforms.
               </p>
               <div className="space-y-3">
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:kdkaranwork@gmail.com"
                   className="flex items-center space-x-3 text-gray-400 hover:text-primary-400 transition-colors"
                 >
                   <Mail className="w-5 h-5" />
-                  <span>your.email@example.com</span>
+                  <span>kdkaranwork@gmail.com</span>
                 </a>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+916201821776"
                   className="flex items-center space-x-3 text-gray-400 hover:text-primary-400 transition-colors"
                 >
                   <Phone className="w-5 h-5" />
-                  <span>+91 98765 43210</span>
+                  <span>+91 6201821776</span>
                 </a>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <MapPin className="w-5 h-5" />
@@ -112,7 +112,7 @@ export default function Footer() {
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:kdkaranwork@gmail.com"
                   className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:bg-primary-600 hover:text-white transition-all"
                   aria-label="Email"
                 >

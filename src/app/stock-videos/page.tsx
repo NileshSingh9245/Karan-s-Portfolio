@@ -41,7 +41,7 @@ export default function StockVideosPage() {
         <Container>
           <SectionHeader
             title="Stock Videos"
-            subtitle="Premium stock videos and templates ready for your next project. All videos are optimized for Instagram Reels and social media."
+            subtitle="Premium stock videos and templates ready for your next project. All videos are optimized for social media platforms including Instagram, Facebook, YouTube, and LinkedIn."
           />
 
           {/* Category Filter */}

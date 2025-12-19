@@ -1,0 +1,29 @@
+[
+  {
+    "id": "team-001",
+    "name": "Karan",
+    "roles": [
+      "Social Media Manager",
+      "Video Editor",
+      "Content Creator",
+      "Digital Marketing Strategist",
+      "Graphic Designer"
+    ],
+    "email": "kdkaranwork@gmail.com",
+    "phone": "+91-6201821776",
+    "bio": "Passionate Digital Marketing & Creative Freelancer with 5+ years of experience helping Indian businesses grow their online presence through powerful social media content and strategic marketing.",
+    "image": "/images/team/karan.jpg"
+  },
+  {
+    "id": "team-002",
+    "name": "Nilesh Kumar Singh",
+    "roles": [
+      "Developer",
+      "Video Editor"
+    ],
+    "email": "nileshkumarsingh@zohomail.in",
+    "phone": "+91-6200759921",
+    "bio": "Experienced developer and video editor bringing technical expertise and creative vision to every project.",
+    "image": "/images/team/nilesh.jpg"
+  }
+]

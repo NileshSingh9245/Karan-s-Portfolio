@@ -3,7 +3,7 @@ import { generateSEO } from "@/lib/seo";
 
 export const metadata: Metadata = generateSEO({
   title: "Contact",
-  description: "Get in touch to discuss your digital marketing project. Free consultation for Instagram Reels, video editing, and social media management services.",
+  description: "Get in touch to discuss your digital marketing project. Free consultation for social media management, video editing, and content creation services across all platforms.",
   keywords: [
     "contact digital marketer",
     "hire video editor",

@@ -9,6 +9,9 @@ import Section, { SectionHeader } from "@/components/ui/Section";
 import ServiceCard from "@/components/services/ServiceCard";
 import TestimonialCard from "@/components/testimonials/TestimonialCard";
 import ReelCard from "@/components/portfolio/ReelCard";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 import servicesData from "@/data/services.json";
 import testimonialsData from "@/data/testimonials.json";
 import reelsData from "@/data/reels.json";
@@ -39,11 +42,24 @@ export default function HomePage() {
   const featuredReels = reelsData.slice(0, 6);
   const featuredTestimonials = testimonialsData.slice(0, 3);
 
+  const words = [
+    { text: "Grow" },
+    { text: "Your" },
+    { text: "Business" },
+    { text: "with", className: "text-primary-600 dark:text-primary-400" },
+    { text: "Social", className: "text-primary-600 dark:text-primary-400" },
+    { text: "Media", className: "text-accent-600 dark:text-accent-400" },
+  ];
+
   return (
     <>
       {/* Hero Section */}
       <Section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 pt-24 md:pt-32">
-        <Container>
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900 via-transparent to-transparent" />
+        
+        <Container className="relative z-10">
           <motion.div
             initial="initial"
             animate="animate"
@@ -56,16 +72,9 @@ export default function HomePage() {
               </span>
             </motion.div>
 
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
-            >
-              Grow Your Business with
-              <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-                {" "}
-                Instagram Reels
-              </span>
-            </motion.h1>
+            <motion.div variants={fadeInUp} className="mb-6">
+              <TypewriterEffect words={words} className="text-4xl md:text-5xl lg:text-6xl" />
+            </motion.div>
 
             <motion.p
               variants={fadeInUp}
@@ -97,18 +106,23 @@ export default function HomePage() {
               className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-16 md:mt-20"
             >
               {stats.map((stat, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <stat.icon className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" />
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {stat.label}
-                  </div>
-                </div>
+                  <BackgroundGradient className="rounded-xl">
+                    <div className="p-6 bg-white dark:bg-gray-800 rounded-xl">
+                      <stat.icon className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" />
+                      <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        {stat.label}
+                      </div>
+                    </div>
+                  </BackgroundGradient>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>
@@ -120,12 +134,22 @@ export default function HomePage() {
         <Container>
           <SectionHeader
             title="Featured Work"
-            subtitle="Check out some of my recent Instagram Reels that helped clients achieve amazing results"
+            subtitle="Check out some of my recent social media content that helped clients achieve amazing results"
           />
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {featuredReels.map((reel) => (
-              <ReelCard key={reel.id} {...reel} />
+            {featuredReels.map((reel, index) => (
+              <motion.div
+                key={reel.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <CardSpotlight className="h-full">
+                  <ReelCard {...reel} />
+                </CardSpotlight>
+              </motion.div>
             ))}
           </div>
 
@@ -149,8 +173,19 @@ export default function HomePage() {
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {featuredServices.map((service) => (
-              <ServiceCard key={service.id} {...service} />
+            {featuredServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <CardSpotlight className="h-full">
+                  <ServiceCard {...service} />
+                </CardSpotlight>
+              </motion.div>
             ))}
           </div>
 
@@ -174,34 +209,73 @@ export default function HomePage() {
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {featuredTestimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} {...testimonial} />
+            {featuredTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ y: -10 }}
+              >
+                <CardSpotlight className="h-full">
+                  <TestimonialCard {...testimonial} />
+                </CardSpotlight>
+              </motion.div>
             ))}
           </div>
         </Container>
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primary-600 to-accent-600 text-white">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <Section className="bg-gradient-to-br from-primary-600 to-accent-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:50px_50px]" />
+        <Container className="relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-3xl md:text-4xl font-bold mb-4"
+            >
               Ready to Grow Your Business?
-            </h2>
-            <p className="text-xl mb-8 text-primary-100">
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-xl mb-8 text-primary-100"
+            >
               Let's discuss how I can help you achieve your digital marketing goals with proven strategies and creative content.
-            </p>
-            <Link href="/contact">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-white text-primary-600 hover:bg-gray-100"
-              >
-                Get Started Today
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link href="/contact">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="bg-white text-primary-600 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-shadow"
+                >
+                  Get Started Today
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
         </Container>
       </Section>
     </>

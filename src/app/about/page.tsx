@@ -3,6 +3,8 @@ import Section, { SectionHeader } from "@/components/ui/Section";
 import { Card, CardBody } from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import TeamMemberCard from "@/components/team/TeamMemberCard";
+import teamData from "@/data/team.json";
 import { 
   Award, 
   Target, 
@@ -59,7 +61,7 @@ const journey = [
   {
     year: "2020",
     title: "Instagram Focus",
-    description: "Specialized in Instagram Reels and short-form content as they gained popularity.",
+    description: "Expanded to manage all social media platforms and short-form content across Instagram, Facebook, YouTube, LinkedIn, and more.",
   },
   {
     year: "2021",
@@ -96,7 +98,7 @@ export default function AboutPage() {
               </h1>
               
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                A passionate Digital Marketing & Creative Freelancer with 5+ years of experience helping Indian businesses grow their online presence through powerful Instagram Reels, engaging content, and strategic marketing.
+                A passionate Digital Marketing & Creative Freelancer with 5+ years of experience helping Indian businesses grow their online presence through powerful social media content, engaging videos, and strategic marketing across all platforms.
               </p>
               
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
@@ -252,6 +254,22 @@ export default function AboutPage() {
               <div className="text-5xl font-bold mb-2">5+</div>
               <div className="text-primary-100">Years Experience</div>
             </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Team Section */}
+      <Section className="bg-gray-50 dark:bg-gray-800/50">
+        <Container>
+          <SectionHeader
+            title="Meet Our Team"
+            subtitle="The talented individuals behind your success"
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {teamData.map((member) => (
+              <TeamMemberCard key={member.id} {...member} />
+            ))}
           </div>
         </Container>
       </Section>
