@@ -73,13 +73,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed lg:static inset-0 z-40 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 lg:translate-x-0",
+        "fixed lg:static inset-0 z-40 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 lg:translate-x-0 top-[57px] lg:top-0",
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         {/* Overlay for mobile */}
         {isMobileMenuOpen && (
           <div 
-            className="lg:hidden fixed inset-0 bg-black/50 -z-10"
+            className="lg:hidden fixed inset-0 bg-black/50 -z-10 top-[57px]"
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
