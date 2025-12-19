@@ -195,18 +195,60 @@ export default function AdminReelsPage() {
 
   return (
     <AdminLayout>
-      <div className="p-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+      <div className="p-4 lg:p-8">
+        <div className="flex items-center justify-between mb-6 lg:mb-8">
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
             Manage Reels
           </h1>
-          <Button onClick={openCreateModal} variant="primary">
-            <Plus className="w-5 h-5 mr-2" />
-            Add Reel
+          <Button onClick={openCreateModal} variant="primary" size="sm" className="lg:px-4 lg:py-2">
+            <Plus className="w-4 h-4 lg:w-5 lg:h-5 mr-1 lg:mr-2" />
+            <span className="hidden sm:inline">Add Reel</span>
+            <span className="sm:hidden">Add</span>
           </Button>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+        {/* Mobile Card View */}
+        <div className="lg:hidden space-y-4">
+          {reels.map((reel) => (
+            <div key={reel.id} className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+              <div className="flex justify-between items-start mb-3">
+                <div className="flex-1 min-w-0 pr-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1 truncate">
+                    {reel.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {reel.genre}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                    Views: {reel.stats.views}
+                  </p>
+                </div>
+                <div className="flex gap-2 flex-shrink-0">
+                  <button
+                    onClick={() => openEditModal(reel)}
+                    className="p-2 text-primary-600 hover:bg-primary-50 dark:text-primary-400 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                  >
+                    <Pencil className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(reel.id)}
+                    className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+          {reels.length === 0 && (
+            <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+              No reels found. Tap "Add" to create one.
+            </div>
+          )}
+        </div>
+
+        {/* Desktop Table View */}
+        <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
           <table className="w-full">
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
@@ -272,9 +314,9 @@ export default function AdminReelsPage() {
 
         {/* Create/Edit Modal */}
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full">
             <DialogHeader>
-              <DialogTitle>
+              <DialogTitle className="text-lg lg:text-xl">
                 {editingReel ? "Edit Reel" : "Add New Reel"}
               </DialogTitle>
             </DialogHeader>
