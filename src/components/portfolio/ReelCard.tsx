@@ -48,36 +48,52 @@ export default function ReelCard({
 
   return (
     <>
-      <Card hover className="group overflow-hidden">
-        <div className={`relative ${aspectRatio} bg-gray-900 overflow-hidden`}>
-          {/* Instagram Embed - plays directly on card */}
-          <iframe
-            src={embedUrl}
-            title={title}
-            className="absolute inset-0 w-full h-full border-0"
-            allowFullScreen
-            allow="autoplay; encrypted-media"
-          />
+      <Card hover className="group overflow-hidden cursor-pointer">
+        <div 
+          className={`relative ${aspectRatio} bg-gray-900 overflow-hidden`}
+          onClick={() => setIsModalOpen(true)}
+        >
+          {/* Thumbnail Image */}
+          {thumbnailUrl && !imageError ? (
+            <img
+              src={thumbnailUrl}
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary-600 to-accent-600 flex items-center justify-center">
+              <Play className="w-16 h-16 text-white/80" />
+            </div>
+          )}
           
-          {/* Overlay with actions - appears on hover */}
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3 pointer-events-none">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="pointer-events-auto px-4 py-2 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-            >
-              View Details
-            </button>
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pointer-events-auto px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors"
-            >
-              Open on Instagram
-            </a>
-            <div className="flex items-center gap-4 text-white text-sm">
-              <span>👁️ {stats.views}</span>
-              <span>❤️ {stats.engagement}</span>
+          {/* Hover Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
+            <div className="flex justify-end">
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="px-3 py-1.5 bg-white/90 text-gray-900 rounded-lg text-sm font-medium hover:bg-white transition-colors"
+              >
+                Open on Instagram
+              </a>
+            </div>
+            
+            <div>
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                  <Play className="w-6 h-6 text-gray-900" />
+                </div>
+              </div>
+              <div className="flex items-center justify-between text-white text-sm">
+                <div className="flex items-center gap-4">
+                  <span>👁 {stats.views}</span>
+                  <span>📊 {stats.engagement}</span>
+                </div>
+                <Badge variant="primary">{genre}</Badge>
+              </div>
             </div>
           </div>
         </div>
