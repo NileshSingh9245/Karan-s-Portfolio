@@ -50,22 +50,25 @@ export default function ReelCard({
     <>
       <Card hover className="group overflow-hidden cursor-pointer">
         <div 
-          className={`relative ${aspectRatio} bg-gray-900 overflow-hidden`}
+          className={`relative ${aspectRatio} bg-black overflow-hidden`}
           onClick={() => setIsModalOpen(true)}
         >
           {/* Instagram Embed - Cropped to show only video content */}
-          <div className="absolute inset-0 w-full overflow-hidden">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <iframe
               src={embedUrl}
               title={title}
               className="absolute border-0 pointer-events-none"
               style={{
                 width: '100%',
-                height: 'calc(100% + 120px)',
-                top: '-60px',
-                left: '0'
+                height: 'calc(100% + 200px)',
+                top: '-100px',
+                left: '0',
+                border: 'none',
+                outline: 'none'
               }}
               scrolling="no"
+              frameBorder="0"
               allowFullScreen
               allow="encrypted-media"
             />
