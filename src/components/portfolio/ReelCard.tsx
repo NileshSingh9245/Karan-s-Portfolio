@@ -53,22 +53,21 @@ export default function ReelCard({
           className={`relative ${aspectRatio} bg-gray-900 overflow-hidden`}
           onClick={() => setIsModalOpen(true)}
         >
-          {/* Thumbnail Image */}
-          {thumbnailUrl && !imageError ? (
-            <img
-              src={thumbnailUrl}
-              alt={title}
-              className="absolute inset-0 w-full h-full object-cover"
-              onError={() => setImageError(true)}
+          {/* Instagram Embed as Thumbnail - cropped to show video only */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <iframe
+              src={embedUrl}
+              title={title}
+              className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+              scrolling="no"
+              allowFullScreen
+              allow="encrypted-media"
+              style={{ transform: 'scale(1.5)', transformOrigin: 'center top' }}
             />
-          ) : (
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary-600 to-accent-600 flex items-center justify-center">
-              <Play className="w-16 h-16 text-white/80" />
-            </div>
-          )}
+          </div>
           
           {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4 z-10">
             <div className="flex justify-end">
               <a
                 href={instagramUrl}
