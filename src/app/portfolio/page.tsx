@@ -1,23 +1,82 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Container from "@/components/ui/Container";
 import Section, { SectionHeader } from "@/components/ui/Section";
 import ReelCard from "@/components/portfolio/ReelCard";
 import Button from "@/components/ui/Button";
 import { generateSEO } from "@/lib/seo";
+import { supabase } from "@/lib/supabase";
 import reelsData from "@/data/reels.json";
 
 const genres = ["All", "Digital Marketing", "Reels", "Ads", "Branding", "Social Media"];
 
+interface Reel {
+  id: string;
+  title: string;
+  description: string;
+  embedUrl: string;
+  thumbnailUrl: string;
+  genre: string;
+  tools: string[];
+  stats: {
+    views: string;
+    engagement: string;
+  };
+  clientName: string;
+}
+
 export default function PortfolioPage() {
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [visibleCount, setVisibleCount] = useState(9);
+  const [reels, setReels] = useState<Reel[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch reels from Supabase (newest first)
+  useEffect(() => {
+    const fetchReels = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("reels")
+          .select("*")
+          .order("created_at", { ascending: false }); // Newest first!
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          // Convert database format to component format
+          const formattedReels = data.map((reel: any) => ({
+            id: reel.id,
+            title: reel.title,
+            description: reel.description,
+            embedUrl: reel.embed_url,
+            thumbnailUrl: reel.thumbnail_url || "",
+            genre: reel.genre,
+            tools: reel.tools || [],
+            stats: reel.stats || { views: "0", engagement: "0%" },
+            clientName: reel.client_name,
+          }));
+          setReels(formattedReels);
+        } else {
+          // Use dummy data if no reels in database yet
+          setReels(reelsData as Reel[]);
+        }
+      } catch (error) {
+        console.error("Error fetching reels:", error);
+        // Fallback to dummy data on error
+        setReels(reelsData as Reel[]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReels();
+  }, []);
 
   const filteredReels = useMemo(() => {
-    if (selectedGenre === "All") return reelsData;
-    return reelsData.filter((reel) => reel.genre === selectedGenre);
-  }, [selectedGenre]);
+    if (selectedGenre === "All") return reels;
+    return reels.filter((reel) => reel.genre === selectedGenre);
+  }, [selectedGenre, reels]);
 
   const visibleReels = filteredReels.slice(0, visibleCount);
   const hasMore = visibleCount < filteredReels.length;
@@ -35,20 +94,26 @@ export default function PortfolioPage() {
             subtitle="Browse through my collection of Instagram Reels and creative work that helped clients achieve exceptional results"
           />
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-            {genres.map((genre) => (
-              <Button
-                key={genre}
-                variant={selectedGenre === genre ? "primary" : "outline"}
-                size="sm"
-                onClick={() => {
-                  setSelectedGenre(genre);
-                  setVisibleCount(9);
-                }}
-              >
-                {genre}
-              </Button>
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600 dark:text-gray-400">Loading portfolio...</p>
+            </div>
+          ) : (
+            <>
+              {/* Filter Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+                {genres.map((genre) => (
+                  <Button
+                    key={genre}
+                    variant={selectedGenre === genre ? "primary" : "outline"}
+                    size="sm"
+                    onClick={() => {
+                      setSelectedGenre(genre);
+                      setVisibleCount(9);
+                    }}
+                  >
+                    {genre}
+                  </Button>
             ))}
           </div>
 
@@ -83,6 +148,8 @@ export default function PortfolioPage() {
                 No reels found in this category.
               </p>
             </div>
+          )}
+          </>
           )}
         </Container>
       </Section>
