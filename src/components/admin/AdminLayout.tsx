@@ -34,9 +34,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {/* Sidebar */}
       <aside className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
             Admin Panel
           </h1>
+          <Link href="/" className="text-sm text-primary-600 dark:text-primary-400 hover:underline">
+            ← View Site
+          </Link>
         </div>
 
         <nav className="flex-1 p-4 space-y-2">
