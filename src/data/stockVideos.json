@@ -1,0 +1,98 @@
+[
+  {
+    "id": "video-001",
+    "title": "Tech Product Showcase Template",
+    "description": "Modern tech product reveal with sleek animations and dynamic transitions. Perfect for gadgets and electronics.",
+    "videoPath": "/videos/tech-showcase.mp4",
+    "thumbnailPath": "/images/videos/tech-showcase-thumb.jpg",
+    "category": "Product Showcase",
+    "duration": "0:30",
+    "resolution": "1080x1920",
+    "usage": "Ideal for tech products, gadgets, mobile apps, and SaaS demos",
+    "tags": ["tech", "product", "modern", "sleek"]
+  },
+  {
+    "id": "video-002",
+    "title": "Food & Restaurant Promo",
+    "description": "Appetizing food video with warm colors and smooth panning shots. Makes viewers hungry!",
+    "videoPath": "/videos/food-promo.mp4",
+    "thumbnailPath": "/images/videos/food-promo-thumb.jpg",
+    "category": "Food & Beverage",
+    "duration": "0:25",
+    "resolution": "1080x1920",
+    "usage": "Perfect for restaurants, cafes, food delivery services, and culinary content",
+    "tags": ["food", "restaurant", "appetizing", "promo"]
+  },
+  {
+    "id": "video-003",
+    "title": "Fashion Collection Teaser",
+    "description": "High-fashion video with dramatic lighting and professional model shots. Runway-ready aesthetic.",
+    "videoPath": "/videos/fashion-teaser.mp4",
+    "thumbnailPath": "/images/videos/fashion-teaser-thumb.jpg",
+    "category": "Fashion & Lifestyle",
+    "duration": "0:35",
+    "resolution": "1080x1920",
+    "usage": "Great for fashion brands, boutiques, clothing launches, and lifestyle products",
+    "tags": ["fashion", "lifestyle", "elegant", "premium"]
+  },
+  {
+    "id": "video-004",
+    "title": "Fitness Motivation Loop",
+    "description": "High-energy workout montage with motivational vibe. Gets people moving!",
+    "videoPath": "/videos/fitness-motivation.mp4",
+    "thumbnailPath": "/images/videos/fitness-motivation-thumb.jpg",
+    "category": "Fitness & Health",
+    "duration": "0:28",
+    "resolution": "1080x1920",
+    "usage": "Ideal for gyms, personal trainers, fitness apps, and wellness brands",
+    "tags": ["fitness", "motivation", "energy", "workout"]
+  },
+  {
+    "id": "video-005",
+    "title": "Real Estate Luxury Tour",
+    "description": "Cinematic property walkthrough with smooth gimbal movements. Showcases luxury and space.",
+    "videoPath": "/videos/real-estate-tour.mp4",
+    "thumbnailPath": "/images/videos/real-estate-tour-thumb.jpg",
+    "category": "Real Estate",
+    "duration": "0:40",
+    "resolution": "1080x1920",
+    "usage": "Perfect for property listings, real estate marketing, and architecture showcases",
+    "tags": ["real-estate", "luxury", "property", "cinematic"]
+  },
+  {
+    "id": "video-006",
+    "title": "Business Services Explainer",
+    "description": "Clean and professional service explanation with text overlays and icons. Corporate-friendly.",
+    "videoPath": "/videos/business-explainer.mp4",
+    "thumbnailPath": "/images/videos/business-explainer-thumb.jpg",
+    "category": "Business & Corporate",
+    "duration": "0:32",
+    "resolution": "1080x1920",
+    "usage": "Great for B2B services, consulting firms, and professional service providers",
+    "tags": ["business", "corporate", "professional", "explainer"]
+  },
+  {
+    "id": "video-007",
+    "title": "E-commerce Product Ad",
+    "description": "Fast-paced product showcase with call-to-action. Optimized for conversions.",
+    "videoPath": "/videos/ecommerce-ad.mp4",
+    "thumbnailPath": "/images/videos/ecommerce-ad-thumb.jpg",
+    "category": "E-commerce",
+    "duration": "0:22",
+    "resolution": "1080x1920",
+    "usage": "Ideal for online stores, product launches, and flash sale promotions",
+    "tags": ["ecommerce", "product", "sale", "conversion"]
+  },
+  {
+    "id": "video-008",
+    "title": "Event Highlight Reel",
+    "description": "Dynamic event recap with crowd energy and key moments. Creates FOMO!",
+    "videoPath": "/videos/event-highlight.mp4",
+    "thumbnailPath": "/images/videos/event-highlight-thumb.jpg",
+    "category": "Events & Entertainment",
+    "duration": "0:38",
+    "resolution": "1080x1920",
+    "usage": "Perfect for concerts, conferences, weddings, and corporate events",
+    "tags": ["event", "entertainment", "highlight", "dynamic"]
+  }
+]

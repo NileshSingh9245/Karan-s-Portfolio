@@ -1,0 +1,68 @@
+[
+  {
+    "id": "testimonial-001",
+    "name": "Priya Sharma",
+    "role": "Founder, Fashion Boutique Mumbai",
+    "company": "Trendy Threads",
+    "image": "/images/testimonials/priya-sharma.jpg",
+    "rating": 5,
+    "text": "Working with Karan transformed our Instagram presence. Our Reels consistently get 1M+ views, and we've seen a 300% increase in online inquiries. His understanding of the Indian market is exceptional!",
+    "projectType": "Social Media Management",
+    "results": "+300% inquiries, 1M+ avg views"
+  },
+  {
+    "id": "testimonial-002",
+    "name": "Rajesh Kumar",
+    "role": "Owner",
+    "company": "Delhi Delights Restaurant",
+    "image": "/images/testimonials/rajesh-kumar.jpg",
+    "rating": 5,
+    "text": "The food videos Karan created made our dishes look absolutely irresistible. We saw an immediate spike in reservations. His video editing skills are world-class, and he delivers on time every single time.",
+    "projectType": "Video Editing",
+    "results": "40% increase in bookings"
+  },
+  {
+    "id": "testimonial-003",
+    "name": "Ananya Desai",
+    "role": "Marketing Head",
+    "company": "TechFlow Solutions",
+    "image": "/images/testimonials/ananya-desai.jpg",
+    "rating": 5,
+    "text": "Karan helped us break into Instagram marketing with a strategy that actually works. His product demo Reels generated over 500 qualified leads for our SaaS platform. Best investment we made this year!",
+    "projectType": "Digital Marketing",
+    "results": "500+ qualified leads"
+  },
+  {
+    "id": "testimonial-004",
+    "name": "Vikram Singh",
+    "role": "Gym Owner",
+    "company": "FitLife Bangalore",
+    "image": "/images/testimonials/vikram-singh.jpg",
+    "rating": 5,
+    "text": "Our fitness Reels went viral thanks to Karan's editing magic! He knows exactly what works on Instagram. Membership inquiries doubled in just 2 months. Highly recommend for any fitness brand!",
+    "projectType": "Content Creation",
+    "results": "2x membership inquiries"
+  },
+  {
+    "id": "testimonial-005",
+    "name": "Meera Patel",
+    "role": "CEO",
+    "company": "Premium Properties Pune",
+    "image": "/images/testimonials/meera-patel.jpg",
+    "rating": 5,
+    "text": "The property tour videos Karan created were stunning! Cinematic quality that made our listings stand out. One luxury property sold within 2 weeks of posting the Reel. Worth every rupee!",
+    "projectType": "Video Production",
+    "results": "Property sold in 2 weeks"
+  },
+  {
+    "id": "testimonial-006",
+    "name": "Arjun Reddy",
+    "role": "E-commerce Manager",
+    "company": "ShopNow India",
+    "image": "/images/testimonials/arjun-reddy.jpg",
+    "rating": 5,
+    "text": "Karan's flash sale Reel drove 10,000+ visitors to our website in 24 hours! His creativity and understanding of e-commerce marketing is unmatched. We now work with him on all our major campaigns.",
+    "projectType": "Ad Campaigns",
+    "results": "10K+ website visits in 24hrs"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "reel-001",
+    "title": "Product Launch Campaign - Fashion Brand",
+    "description": "High-energy Instagram Reel showcasing new collection launch. Achieved 2M+ views and 150K+ engagement.",
+    "embedUrl": "https://www.instagram.com/reel/EXAMPLE_ID_1/embed",
+    "thumbnailUrl": "/images/reels/reel-001-thumb.jpg",
+    "genre": "Digital Marketing",
+    "industry": "Fashion",
+    "tools": ["DaVinci Resolve", "Photoshop", "Canva"],
+    "stats": {
+      "views": "2M+",
+      "engagement": "150K+"
+    },
+    "clientName": "Fashion Boutique Mumbai",
+    "dateCreated": "2024-11-15"
+  },
+  {
+    "id": "reel-002",
+    "title": "Restaurant Menu Showcase",
+    "description": "Appetizing food reel with smooth transitions and vibrant colors. Boosted restaurant bookings by 40%.",
+    "embedUrl": "https://www.instagram.com/reel/EXAMPLE_ID_2/embed",
+    "thumbnailUrl": "/images/reels/reel-002-thumb.jpg",
+    "genre": "Reels",
+    "industry": "Food & Beverage",
+    "tools": ["DaVinci Resolve", "Sora"],
+    "stats": {
+      "views": "800K+",
+      "engagement": "65K+"
+    },
+    "clientName": "Delhi Delights Restaurant",
+    "dateCreated": "2024-10-20"
+  },
+  {
+    "id": "reel-003",
+    "title": "Tech Startup Product Demo",
+    "description": "Clean and professional product demonstration reel for SaaS startup. Generated 500+ qualified leads.",
+    "embedUrl": "https://www.instagram.com/reel/EXAMPLE_ID_3/embed",
+    "thumbnailUrl": "/images/reels/reel-003-thumb.jpg",
+    "genre": "Ads",
+    "industry": "Technology",
+    "tools": ["DaVinci Resolve", "Illustrator"],
+    "stats": {
+      "views": "1.5M+",
+      "engagement": "120K+"
+    },
+    "clientName": "TechFlow Solutions",
+    "dateCreated": "2024-09-12"
+  },
+  {
+    "id": "reel-004",
+    "title": "Fitness Brand Motivation",
+    "description": "Energetic fitness transformation reel with dynamic editing and motivational messaging.",
+    "embedUrl": "https://www.instagram.com/reel/EXAMPLE_ID_4/embed",
+    "thumbnailUrl": "/images/reels/reel-004-thumb.jpg",
+    "genre": "Social Media",
+    "industry": "Health & Fitness",
+    "tools": ["DaVinci Resolve", "Photoshop"],
+    "stats": {
+      "views": "3M+",
+      "engagement": "250K+"
+    },
+    "clientName": "FitLife Gym Bangalore",
+    "dateCreated": "2024-11-01"
+  },
+  {
+    "id": "reel-005",
+    "title": "Real Estate Property Tour",
+    "description": "Luxury property showcase with cinematic shots and smooth transitions. Sold within 2 weeks.",
+    "embedUrl": "https://www.instagram.com/reel/EXAMPLE_ID_5/embed",
+    "thumbnailUrl": "/images/reels/reel-005-thumb.jpg",
+    "genre": "Branding",
+    "industry": "Real Estate",
+    "tools": ["DaVinci Resolve", "Canva"],
+    "stats": {
+      "views": "1.2M+",
+      "engagement": "90K+"
+    },
+    "clientName": "Premium Properties Pune",
+    "dateCreated": "2024-10-05"
+  },
+  {
+    "id": "reel-006",
+    "title": "E-commerce Flash Sale",
+    "description": "Fast-paced promotional reel for 24-hour sale event. Drove 10K+ website visits.",
+    "embedUrl": "https://www.instagram.com/reel/EXAMPLE_ID_6/embed",
+    "thumbnailUrl": "/images/reels/reel-006-thumb.jpg",
+    "genre": "Digital Marketing",
+    "industry": "E-commerce",
+    "tools": ["DaVinci Resolve", "Photoshop", "Canva"],
+    "stats": {
+      "views": "900K+",
+      "engagement": "75K+"
+    },
+    "clientName": "ShopNow India",
+    "dateCreated": "2024-11-25"
+  }
+]

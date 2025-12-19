@@ -1,0 +1,74 @@
+[
+  {
+    "id": "service-001",
+    "title": "Digital Marketing",
+    "icon": "megaphone",
+    "shortDescription": "Data-driven marketing strategies that convert followers into customers",
+    "description": "Comprehensive digital marketing solutions tailored for Indian businesses. From strategy to execution, I help brands grow their online presence and achieve measurable results.",
+    "deliverables": [
+      "Social media marketing strategy",
+      "Content calendar planning",
+      "Campaign management & optimization",
+      "Instagram growth & engagement",
+      "Analytics & performance reports",
+      "Competitor analysis"
+    ],
+    "idealClient": "Businesses looking to establish or scale their digital presence on Instagram and social media platforms",
+    "pricingNote": "Custom pricing based on campaign scope and duration",
+    "featured": true
+  },
+  {
+    "id": "service-002",
+    "title": "Social Media Management",
+    "icon": "users",
+    "shortDescription": "End-to-end social media management for consistent brand growth",
+    "description": "Let me handle your social media presence while you focus on your business. Daily content creation, posting, engagement, and community management.",
+    "deliverables": [
+      "Daily content creation & posting",
+      "Instagram Reels & Stories",
+      "Community engagement & responses",
+      "Hashtag research & optimization",
+      "Monthly growth reports",
+      "Brand voice consistency"
+    ],
+    "idealClient": "Busy entrepreneurs and brands who need consistent, high-quality social media presence without the hassle",
+    "pricingNote": "Monthly packages available - Custom pricing based on posting frequency and platforms",
+    "featured": true
+  },
+  {
+    "id": "service-003",
+    "title": "Video Editing",
+    "icon": "film",
+    "shortDescription": "Professional video editing that captivates and converts",
+    "description": "Transform raw footage into engaging content. Specialized in Instagram Reels, YouTube videos, ads, and promotional content with cinematic quality.",
+    "deliverables": [
+      "Instagram Reels editing",
+      "YouTube video editing",
+      "Advertisement videos",
+      "Product showcase videos",
+      "Testimonial videos",
+      "Color grading & effects"
+    ],
+    "idealClient": "Creators, businesses, and brands needing high-quality video content for social media and marketing",
+    "pricingNote": "Per video or monthly package pricing - Depends on video length and complexity",
+    "featured": true
+  },
+  {
+    "id": "service-004",
+    "title": "Graphic Designing",
+    "icon": "palette",
+    "shortDescription": "Eye-catching designs that make your brand stand out",
+    "description": "Custom graphic design services for social media, branding, and marketing materials. Modern, professional designs that align with your brand identity.",
+    "deliverables": [
+      "Social media post designs",
+      "Instagram Story templates",
+      "Logo design & branding",
+      "Carousel posts",
+      "Banner & ad designs",
+      "Brand style guides"
+    ],
+    "idealClient": "Brands and businesses needing consistent, professional visual content for their marketing efforts",
+    "pricingNote": "Per design or monthly package - Custom pricing based on volume and complexity",
+    "featured": false
+  }
+]
