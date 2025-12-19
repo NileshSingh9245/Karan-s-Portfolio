@@ -53,28 +53,33 @@ export default function ReelCard({
           className={`relative ${aspectRatio} bg-gray-900 overflow-hidden`}
           onClick={() => setIsModalOpen(true)}
         >
-          {/* Instagram Embed as Thumbnail - cropped to show video only */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
+          {/* Instagram Embed - Cropped to show only video content */}
+          <div className="absolute inset-0 w-full overflow-hidden">
             <iframe
               src={embedUrl}
               title={title}
-              className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+              className="absolute border-0 pointer-events-none"
+              style={{
+                width: '100%',
+                height: 'calc(100% + 120px)',
+                top: '-60px',
+                left: '0'
+              }}
               scrolling="no"
               allowFullScreen
               allow="encrypted-media"
-              style={{ transform: 'scale(1.5)', transformOrigin: 'center top' }}
             />
           </div>
           
           {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4 z-10">
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4 z-10">
             <div className="flex justify-end">
               <a
                 href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="px-3 py-1.5 bg-white/90 text-gray-900 rounded-lg text-sm font-medium hover:bg-white transition-colors"
+                className="px-3 py-1.5 bg-white text-gray-900 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors"
               >
                 Open on Instagram
               </a>
@@ -82,16 +87,20 @@ export default function ReelCard({
             
             <div>
               <div className="flex items-center justify-center mb-4">
-                <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                  <Play className="w-6 h-6 text-gray-900" />
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                  <Play className="w-8 h-8 text-gray-900 ml-1" />
                 </div>
               </div>
-              <div className="flex items-center justify-between text-white text-sm">
-                <div className="flex items-center gap-4">
-                  <span>👁 {stats.views}</span>
-                  <span>📊 {stats.engagement}</span>
+              <div className="flex items-center justify-between text-white">
+                <div className="flex items-center gap-4 text-sm">
+                  <span className="flex items-center gap-1">
+                    <span className="text-lg">👁</span> {stats.views}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-lg">💙</span> {stats.engagement}
+                  </span>
                 </div>
-                <Badge variant="primary">{genre}</Badge>
+                <Badge variant="primary" className="bg-white/90 text-gray-900">{genre}</Badge>
               </div>
             </div>
           </div>

@@ -31,11 +31,11 @@ export default function ReelModal({ open, onOpenChange, reel }: ReelModalProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-6xl max-h-[90vh] p-0 overflow-hidden">
-        <div className="flex flex-col md:flex-row h-full">
-          {/* Video Section - Left Side */}
-          <div className="md:w-1/2 bg-gray-900 flex items-center justify-center relative">
-            <div className={`${aspectRatio} w-full bg-gray-900 flex items-center justify-center`}>
+      <DialogContent className="max-w-6xl max-h-[95vh] p-0 overflow-hidden">
+        <div className="flex flex-col lg:flex-row max-h-[95vh]">
+          {/* Video Section - Top on mobile, Left on desktop */}
+          <div className="lg:w-1/2 bg-gray-900 flex items-center justify-center relative">
+            <div className={`${aspectRatio} w-full max-h-[50vh] lg:max-h-full bg-gray-900 flex items-center justify-center`}>
               {isLoading && (
                 <div className="text-white">Loading reel...</div>
               )}
@@ -50,8 +50,8 @@ export default function ReelModal({ open, onOpenChange, reel }: ReelModalProps) 
             </div>
           </div>
 
-          {/* Details Section - Right Side */}
-          <div className="md:w-1/2 p-6 bg-white dark:bg-gray-800 overflow-y-auto">
+          {/* Details Section - Bottom on mobile, Right on desktop */}
+          <div className="lg:w-1/2 p-4 lg:p-6 bg-white dark:bg-gray-800 overflow-y-auto max-h-[45vh] lg:max-h-full">
             <div className="flex items-start justify-between mb-4">
               <div className="flex gap-2">
                 <Badge variant="primary">{reel.genre}</Badge>
