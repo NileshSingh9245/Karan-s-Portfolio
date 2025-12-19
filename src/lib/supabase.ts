@@ -14,6 +14,7 @@ export interface Reel {
   embedUrl: string;
   thumbnailUrl: string;
   genre: string;
+  platform?: string;
   tools: string[];
   stats: {
     views: string;

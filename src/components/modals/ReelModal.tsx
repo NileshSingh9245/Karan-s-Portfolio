@@ -12,6 +12,7 @@ interface ReelModalProps {
     description: string;
     embedUrl: string;
     genre: string;
+    platform?: string;
     tools: string[];
     stats: {
       views: string;
@@ -23,28 +24,37 @@ interface ReelModalProps {
 
 export default function ReelModal({ open, onOpenChange, reel }: ReelModalProps) {
   const [isLoading, setIsLoading] = useState(true);
+  const platform = reel.platform || 'instagram';
+  
+  // Determine aspect ratio based on platform
+  const aspectRatio = platform === 'youtube' ? 'aspect-video' : 'aspect-[9/16]';
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] p-0 overflow-hidden">
-        {/* Instagram Embed */}
-        <div className="aspect-[9/16] max-h-[70vh] bg-gray-900 flex items-center justify-center overflow-auto">
+      <DialogContent className="max-w-4xl max-h-[95vh] p-0 overflow-hidden bg-gray-900">
+        {/* Video Embed */}
+        <div className={`${aspectRatio} max-h-[80vh] bg-gray-900 flex items-center justify-center`}>
           {isLoading && (
             <div className="text-white">Loading reel...</div>
           )}
           <iframe
             src={reel.embedUrl}
-            className="w-full h-full border-0"
+            title={reel.title}
+            className={`w-full h-full border-0 ${isLoading ? 'hidden' : 'block'}`}
             allowFullScreen
             onLoad={() => setIsLoading(false)}
-            style={{ display: isLoading ? "none" : "block" }}
           />
         </div>
 
         {/* Details */}
-        <div className="p-6 max-h-[30vh] overflow-y-auto">
+        <div className="p-6 bg-white dark:bg-gray-800">
           <div className="flex items-start justify-between mb-3">
-            <Badge variant="primary">{reel.genre}</Badge>
+            <div className="flex gap-2">
+              <Badge variant="primary">{reel.genre}</Badge>
+              {platform && (
+                <Badge className="capitalize">{platform}</Badge>
+              )}
+            </div>
           </div>
 
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">

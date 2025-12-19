@@ -24,6 +24,7 @@ export default function AdminReelsPage() {
     embedUrl: "",
     thumbnailUrl: "",
     genre: "",
+    platform: "instagram",
     tools: "",
     views: "",
     engagement: "",
@@ -67,6 +68,7 @@ export default function AdminReelsPage() {
       embedUrl: "",
       thumbnailUrl: "",
       genre: "",
+      platform: "instagram",
       tools: "",
       views: "",
       engagement: "",
@@ -83,6 +85,7 @@ export default function AdminReelsPage() {
       embedUrl: reel.embedUrl,
       thumbnailUrl: reel.thumbnailUrl || "",
       genre: reel.genre,
+      platform: reel.platform || "instagram",
       tools: reel.tools.join(", "),
       views: reel.stats.views,
       engagement: reel.stats.engagement,
@@ -91,15 +94,52 @@ export default function AdminReelsPage() {
     setIsModalOpen(true);
   };
 
+  // Auto-fetch thumbnail from Instagram when URL is pasted
+  const handleEmbedUrlChange = async (url: string) => {
+    setFormData({ ...formData, embedUrl: url });
+
+    // Check if it's an Instagram URL
+    if (url.includes('instagram.com/reel/') || url.includes('instagram.com/p/')) {
+      try {
+        // Extract clean URL without query params
+        const cleanUrl = url.split('?')[0].replace(/\/$/, '');
+        
+        // Use Instagram's oEmbed API to fetch thumbnail
+        const response = await fetch(`https://api.instagram.com/oembed?url=${cleanUrl}`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.thumbnail_url) {
+            setFormData(prev => ({ ...prev, embedUrl: url, thumbnailUrl: data.thumbnail_url }));
+          }
+        }
+      } catch (error) {
+        console.log('Could not auto-fetch thumbnail:', error);
+      }
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Auto-format Instagram URL to embed format
+    let embedUrl = formData.embedUrl.trim();
+    if (embedUrl.includes('instagram.com/reel/')) {
+      // Remove any existing /embed or trailing slashes
+      embedUrl = embedUrl.replace(/\/(embed)?\/?(\?.*)?$/, '');
+      // Add /embed
+      if (!embedUrl.endsWith('/embed')) {
+        embedUrl = embedUrl + '/embed';
+      }
+    }
 
     const reelData = {
       title: formData.title,
       description: formData.description,
-      embed_url: formData.embedUrl,
+      embed_url: embedUrl,
       thumbnail_url: formData.thumbnailUrl,
       genre: formData.genre,
+      platform: formData.platform,
       tools: formData.tools.split(",").map((t) => t.trim()),
       stats: {
         views: formData.views,
@@ -269,19 +309,19 @@ export default function AdminReelsPage() {
               <Input
                 label="Instagram Embed URL"
                 value={formData.embedUrl}
-                onChange={(e) =>
-                  setFormData({ ...formData, embedUrl: e.target.value })
-                }
+                onChange={(e) => handleEmbedUrlChange(e.target.value)}
                 placeholder="https://www.instagram.com/reel/..."
+                helperText="Paste Instagram link - thumbnail will auto-fetch"
                 required
               />
 
               <Input
-                label="Thumbnail URL (optional)"
+                label="Thumbnail URL (auto-filled)"
                 value={formData.thumbnailUrl}
                 onChange={(e) =>
                   setFormData({ ...formData, thumbnailUrl: e.target.value })
                 }
+                placeholder="Auto-filled from Instagram or paste custom URL"
               />
 
               <Input
@@ -293,6 +333,27 @@ export default function AdminReelsPage() {
                 placeholder="e.g., Corporate, Tech, Lifestyle"
                 required
               />
+
+              <div>
+                <label htmlFor="platform" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Platform
+                </label>
+                <select
+                  id="platform"
+                  value={formData.platform}
+                  onChange={(e) =>
+                    setFormData({ ...formData, platform: e.target.value })
+                  }
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  required
+                >
+                  <option value="instagram">Instagram</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="linkedin">LinkedIn</option>
+                </select>
+              </div>
 
               <Input
                 label="Tools (comma-separated)"

@@ -13,6 +13,7 @@ interface ReelCardProps {
   embedUrl: string;
   thumbnailUrl: string;
   genre: string;
+  platform?: string;
   tools: string[];
   stats: {
     views: string;
@@ -25,33 +26,58 @@ export default function ReelCard({
   title,
   description,
   embedUrl,
+  thumbnailUrl,
   genre,
+  platform = "instagram",
   tools,
   stats,
   clientName,
 }: ReelCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Extract Instagram URL from embed URL
+  const instagramUrl = embedUrl.replace('/embed', '');
+
+  // Determine aspect ratio based on platform
+  const aspectRatio = 
+    platform === 'youtube' ? 'aspect-video' : 
+    platform === 'tiktok' ? 'aspect-[9/16]' :
+    platform === 'facebook' || platform === 'linkedin' ? 'aspect-square' :
+    'aspect-[4/5]'; // Instagram default
 
   return (
     <>
-      <Card hover className="group overflow-hidden cursor-pointer">
-        <div
-          onClick={() => setIsModalOpen(true)}
-          className="relative aspect-[9/16] bg-gray-200 dark:bg-gray-700 overflow-hidden"
-        >
-          {/* Thumbnail */}
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-500 to-accent-500">
-            <Play className="w-16 h-16 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
-          </div>
+      <Card hover className="group overflow-hidden">
+        <div className={`relative ${aspectRatio} bg-gray-900 overflow-hidden`}>
+          {/* Instagram Embed - plays directly on card */}
+          <iframe
+            src={embedUrl}
+            title={title}
+            className="absolute inset-0 w-full h-full border-0"
+            allowFullScreen
+            allow="autoplay; encrypted-media"
+          />
           
-          {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <div className="text-center text-white p-4">
-              <p className="font-semibold mb-2">Click to view</p>
-              <div className="flex items-center justify-center space-x-4 text-sm">
-                <span>👁️ {stats.views}</span>
-                <span>❤️ {stats.engagement}</span>
-              </div>
+          {/* Overlay with actions - appears on hover */}
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3 pointer-events-none">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="pointer-events-auto px-4 py-2 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+            >
+              View Details
+            </button>
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pointer-events-auto px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors"
+            >
+              Open on Instagram
+            </a>
+            <div className="flex items-center gap-4 text-white text-sm">
+              <span>👁️ {stats.views}</span>
+              <span>❤️ {stats.engagement}</span>
             </div>
           </div>
         </div>
@@ -95,6 +121,7 @@ export default function ReelCard({
           description,
           embedUrl,
           genre,
+          platform,
           tools,
           stats,
           clientName,

@@ -18,6 +18,7 @@ interface Reel {
   embedUrl: string;
   thumbnailUrl: string;
   genre: string;
+  platform?: string;
   tools: string[];
   stats: {
     views: string;
@@ -52,6 +53,7 @@ export default function PortfolioPage() {
             embedUrl: reel.embed_url,
             thumbnailUrl: reel.thumbnail_url || "",
             genre: reel.genre,
+            platform: reel.platform || "instagram",
             tools: reel.tools || [],
             stats: reel.stats || { views: "0", engagement: "0%" },
             clientName: reel.client_name,
