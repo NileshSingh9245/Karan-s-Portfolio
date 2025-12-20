@@ -99,19 +99,21 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
-      // Send to API route (server-side)
-      const response = await fetch("/api/contact", {
+      // Send directly to Web3Forms from client-side (bypasses Cloudflare)
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: formData.name,
+          access_key: "48d82820-ff5b-4ea7-ab95-7d474dccf714",
           email: formData.email,
+          name: formData.name,
           phone: formData.phone,
-          service: formData.service,
-          budget: formData.budget,
-          message: formData.message,
+          message: `Service: ${formData.service}\nBudget: ${formData.budget}\n\n${formData.message}`,
+          subject: `New ${formData.service} Inquiry - ${formData.budget}`,
+          from_name: formData.name,
+          replyto: formData.email,
         }),
       });
 
