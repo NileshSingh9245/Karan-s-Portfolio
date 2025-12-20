@@ -27,24 +27,35 @@ export async function POST(request: NextRequest) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify({
         access_key: process.env.WEB3FORMS_ACCESS_KEY,
-        to: "kdkaranwork@gmail.com,nileshkumarsingh@zohomail.in",
-        from_name: body.name,
-        subject: `New ${body.service} Inquiry - ${body.budget}`,
-        name: body.name,
         email: body.email,
+        name: body.name,
         phone: body.phone,
-        service: body.service,
-        budget: body.budget,
-        message: body.message,
+        message: `Service: ${body.service}\nBudget: ${body.budget}\n\n${body.message}`,
+        subject: `New ${body.service} Inquiry - ${body.budget}`,
+        from_name: body.name,
+        replyto: body.email,
       }),
     });
 
-    const data = await response.json();
+    const responseText = await response.text();
+    console.log('Web3Forms raw response:', { status: response.status, body: responseText });
     
-    console.log('Web3Forms response:', { status: response.status, data });
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (e) {
+      console.error('Failed to parse response as JSON:', responseText);
+      return NextResponse.json(
+        { error: 'Invalid response from email service', details: responseText.substring(0, 200) },
+        { status: 500 }
+      );
+    }
+    
+    console.log('Web3Forms parsed response:', data);
 
     if (response.ok && data.success) {
       return NextResponse.json({ success: true, message: 'Email sent successfully' });
