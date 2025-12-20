@@ -99,13 +99,24 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
-      // Replace with your form backend (Formspree, Web3Forms, etc.)
-      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      // Send to Web3Forms with multiple recipients
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get from https://web3forms.com
+          to: "kdkaranwork@gmail.com,nileshsingh9245@gmail.com",
+          from_name: formData.name,
+          subject: `New ${formData.service} Inquiry - ${formData.budget}`,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.message,
+        }),
       });
 
       if (response.ok) {
