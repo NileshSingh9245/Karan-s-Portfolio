@@ -227,12 +227,16 @@ export default function AdminReelsPage() {
                   <button
                     onClick={() => openEditModal(reel)}
                     className="p-2 text-primary-600 hover:bg-primary-50 dark:text-primary-400 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                    aria-label="Edit reel"
+                    title="Edit reel"
                   >
                     <Pencil className="w-5 h-5" />
                   </button>
                   <button
                     onClick={() => handleDelete(reel.id)}
                     className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                    aria-label="Delete reel"
+                    title="Delete reel"
                   >
                     <Trash2 className="w-5 h-5" />
                   </button>

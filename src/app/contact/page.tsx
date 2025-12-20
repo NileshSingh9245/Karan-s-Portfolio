@@ -99,17 +99,13 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
-      // Send to Web3Forms with multiple recipients
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Send to API route (server-side)
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get from https://web3forms.com
-          to: "kdkaranwork@gmail.com,nileshsingh9245@gmail.com",
-          from_name: formData.name,
-          subject: `New ${formData.service} Inquiry - ${formData.budget}`,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
