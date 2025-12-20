@@ -107,12 +107,19 @@ export default function ContactPage() {
         },
         body: JSON.stringify({
           access_key: "48d82820-ff5b-4ea7-ab95-7d474dccf714",
-          email: formData.email,
-          name: formData.name,
-          phone: formData.phone,
-          message: `Service: ${formData.service}\nBudget: ${formData.budget}\n\n${formData.message}`,
           subject: `New ${formData.service} Inquiry - ${formData.budget}`,
           from_name: formData.name,
+          email: "kdkaranwork@gmail.com,nileshkumarsingh@zohomail.in",
+          message: `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Service: ${formData.service}
+Budget: ${formData.budget}
+
+Message:
+${formData.message}
+          `,
           replyto: formData.email,
         }),
       });
